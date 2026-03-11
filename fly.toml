@@ -1,0 +1,21 @@
+# Change this to whatever you want to name your Fly.io app.
+# It becomes part of your app's URL (app-name.fly.dev), but the bot doesn't use it.
+app = "hedabot"
+primary_region = "ord"
+
+[build]
+  dockerfile = "bot/Dockerfile"
+
+# The health server in main.py binds to PORT when it's set.
+# Fly.io sets PORT automatically when [http_service] is present.
+[http_service]
+  internal_port = 8080
+  force_https    = true
+  # Keep at least one machine running at all times — the bot needs to stay online.
+  min_machines_running = 1
+  auto_stop_machines   = "off"
+
+[[vm]]
+  memory   = "256mb"
+  cpu_kind = "shared"
+  cpus     = 1

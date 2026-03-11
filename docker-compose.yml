@@ -1,0 +1,7 @@
+services:
+  bot:
+    build: ./bot
+    # Reads all your credentials from the .env file in this folder.
+    # Make sure you've filled it out before running docker compose up.
+    env_file: .env
+    restart: unless-stopped
